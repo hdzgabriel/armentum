@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+	h1.
+		#{title}
+	ul
+		- each consultora, i in consultoras
+			li
+				= consultora.nombre
+				form(action='/consultoras/#{consultora._id}/edit', method='post', enctype='application/x-www-form-urlencoded')
+					input(type='hidden',value='DELETE',name='_method')
+					button(type='submit').
+						Delete
+				p
+					a(href='/consultoras/#{consultora._id}/edit') Edit
+				p
+					a(href='/consultoras/#{consultora._id}') Show
