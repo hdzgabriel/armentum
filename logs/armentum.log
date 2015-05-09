@@ -1,0 +1,5 @@
+{"name":"armentum","hostname":"ayanamireini.local","pid":11490,"routes":"Empleados","level":30,"msg":"Inicializando REST API","time":"2015-05-08T18:35:59.083Z","v":0}
+{"name":"armentum","hostname":"ayanamireini.local","pid":11490,"routes":"Empleados","level":20,"msg":"bodyParser - urlencoded","time":"2015-05-08T18:35:59.087Z","v":0}
+{"name":"armentum","hostname":"ayanamireini.local","pid":11490,"routes":"Empleados","level":20,"msg":"methodOverride","time":"2015-05-08T18:35:59.087Z","v":0}
+{"name":"armentum","hostname":"ayanamireini.local","pid":11490,"routes":"Empleados","level":20,"msg":"Creando Mongoose Model","time":"2015-05-08T18:35:59.087Z","v":0}
+{"name":"armentum","hostname":"ayanamireini.local","pid":11490,"routes":"Empleados","level":30,"msg":"Mongoose Model Empleado: function model(doc, fields, skipId) {\n    if (!(this instanceof model))\n      return new model(doc, fields, skipId);\n    Model.call(this, doc, fields, skipId);\n  }","time":"2015-05-08T18:35:59.088Z","v":0}

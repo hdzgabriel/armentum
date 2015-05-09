@@ -5,28 +5,34 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var db = require('./model/db');
-var consultora = require ('./model/consultoras');
+var consultora = require('./model/consultoras');
+var empleado = require('./model/empleados');
 
 var routes = require('./routes/index');
 var consultoras = require('./routes/consultoras');
+var empleados = require('./routes/empleados');
 var users = require('./routes/users');
+
+var logger = require('./util/logger');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use('/app', express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/consultoras', consultoras);
+app.use('/api/consultoras', consultoras);
+app.use('/api/empleados', empleados);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
@@ -39,14 +45,16 @@ app.use(function(req, res, next) {
 // error handlers
 
 // development error handler
-// will print stacktrace
+/* will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
+    //res.status(err.status || 500);
+    //res.render('error', {
+    //  message: err.message,
+    //  error: err
+    console.log(res.status);
+    res.sendStatus(err.status || 500);
+    //});
   });
 }
 
@@ -58,6 +66,16 @@ app.use(function(err, req, res, next) {
     message: err.message,
     error: {}
   });
+});*/
+
+app.use(function(err, request, response, next) {
+	//logger.error(err);
+  //console.error("*** ERROR ***");
+	//console.error(err);
+	//console.error(err.stack);
+	//response.status(err.status);
+	//response.sendStatus(err.status);
+  next();
 });
 
 
