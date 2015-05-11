@@ -1,22 +1,35 @@
-var showChilds = function (e) {
-	this.hideChilds();
-	this[e+'smenu'] = !this[e+'smenu'];
-	this.clicked = !this.clicked;
-};
+(function() {
+	'use strict';
 
-var hideChilds = function() {
-	for(var element in this) {
-		console.log(element);
-		if (element.indexOf('smenu') > -1) {element = false;}
+	function SidebarCtrl ($scope, $parse) {
+		var vm = this;
+		vm.rhsmenu = false;
+		vm.clicked = false;
+
+		vm.showChilds = showChilds;
+		vm.hideChilds = hideChilds;
+
+		function showChilds (e) {
+			var vm = this;
+			vm.hideChilds();
+			vm[e+'smenu'] = !vm[e+'smenu'];
+			vm.clicked = !vm.clicked;
+		};
+
+		function hideChilds () {
+			var vm = this;
+			for(var element in vm) {
+				if (element.indexOf('smenu') > -1) {element = false;}
+			}
+		};
+        console.info('SidebarController loaded');
 	}
-};
 
-function SidebarCtrl ($scope, $parse) {
-	this.rhsmenu = false;
-	this.clicked = false;
-	
-	this.showChilds = showChilds;
-	this.hideChilds = hideChilds;
-}
-
-armentum.controller('SidebarCtrl', SidebarCtrl);
+	angular
+		.module('armentum')
+		.controller('SidebarCtrl', [
+            '$scope', 
+            '$parse',
+            SidebarCtrl
+        ]);
+})();

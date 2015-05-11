@@ -1,0 +1,112 @@
+<section class="content-header" data-ng-init="rhe.getEmpleadosList()">
+    <h1>Recursos Humanos<small>Empleados</small></h1>
+    <ol class="breadcrumb">
+        <li><a href="/app"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="/app/rh/"><i class="fa fa-male"></i> Recursos Humanos</a></li>
+		<li class="active"><i class="fa fa-users"></i> Empleados</li>
+    </ol>
+</section>
+<section class="content">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="box">
+				<div class="box-body">
+					<div class="table-responsive">
+						<table class="table table-hover table-bordered" st-table="rhe.showListEmpleados" st-safe-src="rhe.listEmpleados">
+							<thead>
+								<tr>
+                                    <th st-sort="_id" st-class-ascent="sort-ascent" st-class-descent="sort-descent"><a href="#">ID</a></th>
+									<th st-sort="no_empleado" st-class-ascent="sort-ascent" st-class-descent="sort-descent"><a href="#">No. de Empleado</a></th>
+									<th st-sort="apellidos" st-class-ascent="sort-ascent" st-class-descent="sort-descent"><a href="#">Apellidos</a></th>
+									<th st-sort="nombres" st-class-ascent="sort-ascent" st-class-descent="sort-descent"><a href="#">Nombres</a></th>
+									<th st-sort="categoria" st-class-ascent="sort-ascent" st-class-descent="sort-descent"><a href="#">Categoria</a></th>
+									<th st-sort="ext_user" st-class-ascent="sort-ascent" st-class-descent="sort-descent"><a href="#">Usuario Externo</a></th>
+									<th>Activo</th>
+									<th><i class="fa fa-info-circle fa-lg"></i></th>
+                                    <th><i class="fa fa-cogs fa-lg center-block"></i></th>
+								</tr>
+                                <tr>
+									<th>
+                                        <input st-search="_id" class="input-sm form-control" type="search" />
+                                    </th>
+									<th>
+                                        <input st-search="no_empleado" class="input-sm form-control" type="search" />
+                                    </th>
+									<th>
+                                        <input st-search="apellidos" class="input-sm form-control" type="search" />
+                                    </th>
+									<th>
+                                        <input st-search="nombres" class="input-sm form-control" type="search" />
+                                    </th>
+									<th>
+                                        <input st-search="categoria" class="input-sm form-control" style="width:55px;" type="search" />
+                                    </th>
+									<th>
+                                        <input st-search="ext_user" class="input-sm form-control" type="search" />
+                                    </th>
+									<th colspan="3"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr st-selected-row="row" data-ng-repeat="empleado in rhe.showListEmpleados">
+									<td>{{empleado._id}}</td>
+									<td>{{empleado.no_empleado}}</td>
+									<td>{{empleado.apellidos}}</td>
+									<td>{{empleado.nombres}}</td>
+									<td>{{empleado.categoria}}</td>
+									<td>{{empleado.ext_user}}</td>
+									<td>{{empleado.contratacion[0].activo}}</td>
+                                    <td>
+                                        <a href="rh/empleados/{{empleado._id}}" type="button" class="btn btn-info btn-sm center-block"><i class="fa fa-info-circle"></i></button>
+                                    </td>
+									<td>
+										<div class="btn-group btn-block" style="width:65px;" dropdown>
+											<button type="button" class="btn btn-warning btn-sm">										
+												<i class="fa fa-cogs fa-fw"></i> 
+											</button>
+											<button type="button" class="btn btn-warning btn-sm dropdown-toggle" dropdown-toggle>
+												<span class="caret"></span>
+												<span class="sr-only">Split Button</span>
+											</button>
+											<ul class="dropdown-menu dropdown-menu-right" role="menu">
+												<li><a href="#"><i class="fa fa-pencil-square-o fa-fw pull-left"></i><span>Editar</span></a></li>
+												<li><a href="#" data-ng-click="rhe.showDeleteDialog(empleado)"><i class="fa fa-trash-o fa-fw pull-left"></i><span>Eliminar</span></a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="9">
+                                        <div class="pull-left" st-pagination="" st-items-by-page="10" st-displayed-pages="7"></div>
+                                    </td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="table-responsive">
+	
+</div>
+</section>
+
+<script type="text/ng-template" id="modalDelete.html">
+		  <div class="modal-header">
+			<button type="button" class="close" ng-click="rh.closeDeleteDialog(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h4 class="modal-title">Eliminar</h4>
+		  </div>
+		  <div class="modal-body">
+			<p>¿Desea eliminar el Empleado {{rhmd.empleado._id}}?</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" ng-click="rhemd.closeDeleteDialog(false)" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			<button type="button" ng-click="rhemd.closeDeleteDialog(true)" class="btn btn-primary" data-dismiss="modal">Eliminar</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+</script>

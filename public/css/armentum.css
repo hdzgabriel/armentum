@@ -1,0 +1,20 @@
+.sort-ascent:before {
+    font-family: FontAwesome;
+    font-size: x-small;
+    content: '\f077';
+}
+
+.sort-descent:before{
+    font-family: FontAwesome;
+    font-size: x-small;
+    content: '\f078';
+  }
+
+.sort-none:before{
+    font-family: FontAwesome;
+    font-size: x-small;
+    content: '\f111'
+}
+.width-auto {
+    width: inherit;
+}

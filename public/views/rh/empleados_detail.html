@@ -1,0 +1,128 @@
+<section class="content-header" data-ng-init="rhe.getEmpleado()">
+    <h1>Recursos Humanos<small>Empleados</small></h1>
+    <ol class="breadcrumb">
+        <li><a href="/app"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="/app/rh/"><i class="fa fa-male"></i> Recursos Humanos</a></li>
+        <li><a href="/app/rh/empleados"><i class="fa fa-users"></i> Empleados</a></li>
+        <li class="active"><i class="fa fa-user "></i> {{rhe.empleado._id}}</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+		<div class="col-xs-8">
+			<div class="box">
+                <div class="box-header with-border">
+                    <h2 class="box-title">{{rhe.empleado.nombres}} {{rhe.empleado.apellidos}} <small>({{rhe.empleado._id}})</small></h3>
+                    <div class="box-tools pull-right">
+                        
+                    </div>
+                </div>
+				<div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-info">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Informaci&oacute;n General</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <div class="box-body">
+                                                <form class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label for="inputId" class="col-sm-4 control-label">ID:</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="inputId" data-ng-model="rhe.empleadoEdit._id" data-ng-readonly="!rhe.empEditable" />
+                                                        </div> 
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputNoEmpleado" class="col-sm-4 control-label">No. Empleado:</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="inputNoEmpleado" data-ng-model="rhe.empleadoEdit.no_empleado" data-ng-readonly="!rhe.empEditable"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputApellidos" class="col-sm-4 control-label">Apellidos:</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="inputApellidos" data-ng-model="rhe.empleadoEdit.apellidos" data-ng-readonly="!rhe.empEditable"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputNombres" class="col-sm-4 control-label">Nombre(s):</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="inputNombres" data-ng-model="rhe.empleadoEdit.nombres" data-ng-readonly="!rhe.empEditable"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputCategoria" class="col-sm-4 control-label">Categoria:</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="inputCategoria" data-ng-model="rhe.empleadoEdit.categoria" data-ng-readonly="!rhe.empEditable"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputExtUser" class="col-sm-4 control-label">Usuario Externo:</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="inputExtUser" data-ng-model="rhe.empleadoEdit.ext_user" data-ng-readonly="!rhe.empEditable"/>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <a class="btn btn-app bg-blue" role="button" href="#" data-ng-click="rhe.allowEditEmpleado()" data-ng-show="!rhe.empEditable">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                                Editar
+                                            </a>
+                                            <a class="btn btn-app bg-red" role="button" href="#" data-ng-click="rhe.cancelEditEmpleado()" data-ng-show="rhe.empEditable">
+                                                <i class="fa fa-times-circle"></i>
+                                                Cancelar
+                                            </a>
+                                            <a class="btn btn-app bg-green" role="button" href="#" data-ng-click="" data-ng-show="rhe.empEditable">
+                                                <i class="fa fa-floppy-o"></i>
+                                                Guardar
+                                            </a>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Informaci&oacute;n de Contratacion</h3>
+                                </div>
+                                <div class="box-body">
+                                    BODY
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <ul class="timeline">
+                <li class="time-label">
+                    <!-- span class="bg-orange">Roles {{rhe.getCurrentDate() | date: 'dd MMM yyyy'}}</span -->
+                    <div class="btn-group" dropdown>
+                        <button type="button" class="btn btn-warning" >Roles - {{rhe.getCurrentDate() | date: 'dd MMM yyyy'}}</button>
+                        <button type="button" class="btn btn-warning dropdown-toggle" dropdown-toggle>
+                            <span class="caret"></span>
+                            <span class="sr-only">Split Button</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" rol="button"><i class="fa fa-plus pull-left"></i><span>Agregar...</span></a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li data-ng-repeat="rol in rhe.empleado.rol">
+                    <i class="fa fa-briefcase bg-blue"></i>
+                    <div class="timeline-item">
+                        <span class="time"><i class="fa fa-clock-o"></i> {{rol.asignado | date: 'dd MMM yyyy'}}</span>
+                        <h3 class="timeline-header">{{rol.rol_id}} - {{rol.rol_nivel}}</h3>
+                        <div class="timeline-body">Otros detalles</div>
+                        <div class="timeline-footer"><div class="pull-right"><button class="btn btn-warning btn-xs"><span class="fa fa-pencil"></span></button></div></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
