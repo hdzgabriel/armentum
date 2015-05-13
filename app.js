@@ -6,11 +6,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var db = require('./model/db');
 var consultora = require('./model/consultoras');
+var rol = require('./model/roles');
 var empleado = require('./model/empleados');
 
 var routes = require('./routes/index');
 var consultoras = require('./routes/consultoras');
 var empleados = require('./routes/empleados');
+var roles = require('./routes/roles');
+
 var users = require('./routes/users');
 
 var logger = require('./util/logger');
@@ -33,6 +36,7 @@ app.use('/app', express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/api/consultoras', consultoras);
 app.use('/api/empleados', empleados);
+app.use('/api/roles', roles);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

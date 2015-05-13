@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var logger = require('../util/logger').child({routes: 'Empleados'});
 
-logger.info ('Inicializando REST API');
+logger.info ('Inicializando REST API - Empleados');
 logger.debug('bodyParser - urlencoded');
 router.use(bodyParser.urlencoded({extended: true}));
 logger.debug('methodOverride');
@@ -98,6 +98,7 @@ var obtieneEmpleadoPorId = function (request, response, next) {
 	empleadoDao.findById(request.id, function(err, empleado) {
 		if (err) {
 			logger.error('Error obteniendo el empleado con id: ' + request.id);
+            logger.error(err);
 			err.status = 500;
 			next(err);
 		} else {
